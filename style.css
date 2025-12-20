@@ -37,7 +37,8 @@ body {
 
 .nav-header ul {
   display: flex;
-  list-style: none;
+  align-items: center;
+  gap: 12px; /* 👈 clave */
 }
 
 .nav-header a {
@@ -54,8 +55,10 @@ body {
   background: orange;
   border-radius: 4px;
   color: white;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  white-space: nowrap; /* 👈 evita que se rompa */
 }
-
 
 .hero {
   position: relative;
@@ -196,4 +199,11 @@ body {
 .login-error {
   color: red;
   font-size: 14px;
+}
+@media (max-width: 768px) {
+
+  .header-wrap {
+    padding: 1rem 1.5rem; /* menos padding */
+  }
+
 }
