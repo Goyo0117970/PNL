@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PNL</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="main-header">
+  <div class="header-wrap">
+    <a class="logo-header">Web <span>PNL</span></a>
+
+    <nav>
+      <ul class="main-menu">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li>
+          <a href="#" id="btnLogin" class="login-btn">Login</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Programación Neurolingüística</h1>
+</section>
+
+<!-- ===== LOGIN MODAL ===== -->
+<div class="login-modal" id="loginModal">
+  <div class="login-box">
+    <span class="close-login" id="closeLogin">&times;</span>
+
+    <h2>Iniciar sesión</h2>
+
+    <input type="email" id="loginEmail" placeholder="Correo">
+    <input type="password" id="loginPassword" placeholder="Contraseña">
+
+    <button id="loginSubmit">Entrar</button>
+
+    <p id="loginMsg" class="login-msg"></p>
+  </div>
+</div>
+
+<!-- ===== APP TEST (OCULTO) ===== -->
+<div id="testApp" style="display:none"></div>
+
+<script src="login.js"></script>
+<script src="test.js"></script>
+
+</body>
+</html>
