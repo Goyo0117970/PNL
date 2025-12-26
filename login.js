@@ -1,105 +1,115 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-/* HEADER */
-.main-header {
-  background: #286bcf;
-  padding: 15px;
-}
+  console.log("login.js cargado correctamente");
 
-.header-wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  // ===== ELEMENTOS =====
+  const btnLogin = document.getElementById("btnLogin");
+  const overlay = document.getElementById("loginModal");
+  const closeBtn = document.getElementById("closeLogin");
 
-.logo-header {
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-}
+  const loginSubmit = document.getElementById("loginSubmit");
+  const loginMsg = document.getElementById("loginMsg");
 
-.main-menu {
-  display: flex;
-  list-style: none;
-}
+  const emailInput = document.getElementById("loginEmail");
+  const passwordInput = document.getElementById("loginPassword");
 
-.main-menu a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-}
+  // ===== ABRIR LOGIN =====
+  btnLogin.addEventListener("click", (e) => {
+    e.preventDefault();
+    overlay.classList.remove("hide");
+    document.body.style.overflow = "hidden";
+    emailInput.focus();
+  });
 
-.login-btn {
-  background: orange;
-  padding: 6px 14px;
-  border-radius: 5px;
-}
+  // ===== CERRAR LOGIN =====
+  closeBtn.addEventListener("click", () => {
+    overlay.classList.add("hide");
+    document.body.style.overflow = "auto";
+    loginMsg.textContent = "";
+  });
 
-/* HERO */
-.hero {
-  height: 100vh;
-  background: url("img/neuro.jpg") center / cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
+  // ===== VALIDAR EMAIL =====
+  function emailValido(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
 
-/* ===== LOGIN MODAL ===== */
-.login-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
+  // ===== LOGIN / REGISTRO =====
+  loginSubmit.addEventListener("click", () => {
 
-.login-box {
-  background: white;
-  padding: 30px;
-  width: 320px;
-  border-radius: 12px;
-  text-align: center;
-  position: relative;
-}
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
 
-.login-box h2 {
-  margin-bottom: 15px;
-}
+    loginMsg.textContent = "";
+    loginMsg.style.color = "red";
 
-.login-box input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-}
+    if (!email || !password) {
+      loginMsg.textContent = "Todos los campos son obligatorios";
+      return;
+    }
 
-.login-box button {
-  width: 100%;
-  padding: 10px;
-  background: #286bcf;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
+    if (!emailValido(email)) {
+      loginMsg.textContent = "Correo incompleto";
+      return;
+    }
 
-.close-login {
-  position: absolute;
-  right: 12px;
-  top: 10px;
-  font-size: 20px;
-  cursor: pointer;
-}
+    let users = JSON.parse(localStorage.getItem("pnl_users"));
 
-.login-msg {
-  margin-top: 10px;
-  font-size: 14px;
-  color: red;
-}
+    if (!Array.isArray(users)) {
+      users = [];
+    }
+
+    // 🔎 Buscar usuario
+    const index = users.findIndex(u => u.email === email);
+
+    // 🆕 REGISTRO AUTOMÁTICO
+    if (index === -1) {
+      const newUser = { email, password };
+      users.push(newUser);
+      localStorage.setItem("pnl_users", JSON.stringify(users));
+      localStorage.setItem("pnl_logged", JSON.stringify(newUser));
+
+      loginMsg.textContent = "Usuario registrado satisfactoriamente";
+      loginMsg.style.color = "green";
+
+      iniciarTest();
+      return;
+    }
+
+    // 🔐 VALIDAR PASSWORD
+    if (users[index].password !== password) {
+      loginMsg.textContent = "Contraseña incorrecta";
+      return;
+    }
+
+    // ✅ LOGIN CORRECTO
+    localStorage.setItem("pnl_logged", JSON.stringify(users[index]));
+    loginMsg.textContent = "Ingreso correcto";
+    loginMsg.style.color = "green";
+
+    iniciarTest();
+  });
+
+  // ===== INICIAR TEST =====
+  function iniciarTest() {
+    setTimeout(() => {
+      overlay.classList.add("hide");
+      document.body.style.overflow = "auto";
+      loginMsg.textContent = "";
+
+     /* if (window.startPNLTest) {
+        window.startPNLTest();
+      } else {
+        console.error("startPNLTest no existe");
+      } */
+      if (window.startPNLTest) {
+      console.log("✅ startPNLTest EXISTE, ejecutando test");
+      window.startPNLTest();
+      } else {
+      console.log("❌ startPNLTest NO existe");
+      }
+
+
+    }, 800);
+  }
+
+});

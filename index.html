@@ -2,25 +2,27 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Programación Neurolingüística</title>
+  <title>PNL Test</title>
   <link rel="stylesheet" href="style.css">
-</head>
 
+  <!-- Font Awesome (REDES SOCIALES) -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
 <body>
 
 <header class="main-header">
   <div class="header-wrap">
-    <a href="#" class="logo-header">Web <span>PNL</span></a>
+    <a href="#" class="logo-header">PNL TEST</a>
 
     <nav class="nav-header">
-      <ul class="main-menu">
+      <ul>
         <li><a href="#">Inicio</a></li>
-        <li><a href="#">Servicios</a></li>
+        <li><a href="#">Test</a></li>
         <li><a href="#">Contacto</a></li>
-        <li class="login-item">
-          <a href="#" id="btnLogin" class="login-btn">Login</a>
-        </li>
+        <!--<li><a href="#" class="login-btn" id="btnLogin">Login</a></li> -->
+        <a href="#" id="btnLogin" class="login-btn">Login</a>
+
       </ul>
     </nav>
   </div>
@@ -29,43 +31,76 @@
 <main>
   <section class="hero">
     <div class="hero-content">
-      <h1>Programación Neurolingüística</h1>
-      <p class="hero-subtitle">Transforma tu mente, transforma tu vida</p>
+      <h1>Descubre tu nivel</h1>
+      <p class="hero-subtitle">Test de Programación Neurolingüística</p>
     </div>
   </section>
 </main>
 
 <footer class="footer">
-  <ul class="social-icon">
-    <li><a class="icon"><ion-icon name="logo-youtube"></ion-icon></a></li>
-    <li><a class="icon"><ion-icon name="logo-instagram"></ion-icon></a></li>
-    <li><a class="icon"><ion-icon name="logo-whatsapp"></ion-icon></a></li>
-    <li><a class="icon"><ion-icon name="logo-facebook"></ion-icon></a></li>
-  </ul>
-
-  <p class="text">© 2025 | Todos los derechos reservados</p>
+  © 2025 – PNL Test
 </footer>
 
-<!-- LOGIN MODAL -->
-<div class="login-modal" id="loginModal">
-  <div class="login-box">
-    <span class="close-login" id="closeLogin">&times;</span>
-    <h2>Iniciar Sesión</h2>
+<!-- ========== LOGIN MODAL ========== -->
+<div class="login-overlay hide" id="loginModal">
+  <div class="login-modal">
 
-    <input type="email" id="loginEmail" placeholder="Correo">
-    <input type="password" id="loginPass" placeholder="Contraseña">
+    <span class="close-modal" id="closeLogin">&times;</span>
 
-    <p class="login-error" id="loginError"></p>
+    <div class="container-form">
 
-    <button id="loginSubmit">Entrar</button>
+      <!-- LADO IZQUIERDO -->
+      <div class="information">
+        <div class="info-childs">
+          <h2>Bienvenido</h2>
+          <p>Ingresa para continuar tu test</p>
+          
+          <!-- ICONOS -->
+          <div class="icons">
+            <i class="fab fa-google"></i>
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-linkedin-in"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- LADO DERECHO -->
+      <div class="form-information">
+        <div class="form-information-childs">
+
+          <h2>Iniciar sesión</h2>
+
+            <form class="loginForm">
+
+            <label>
+              <i class="fa-solid fa-envelope"></i>
+              <input type="email" id="loginEmail" placeholder="Correo">
+            </label>
+
+            <label>
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="loginPassword" placeholder="Contraseña">
+            </label>
+
+            <input type="button" id="loginSubmit" value="Ingresar">
+                      
+            <p class="register-link">
+              ¿No tienes cuenta?
+              <span id="goRegister">Regístrate aquí</span>
+            </p>
+            <p id="loginMsg" class="login-error"></p>
+
+            
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
-
 <script src="login.js"></script>
 <script src="test.js"></script>
-
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
 </body>
 </html>
