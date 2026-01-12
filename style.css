@@ -124,24 +124,7 @@ body {
 .login-overlay.hide {
   display: none;
 }
-/*
-.login-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 3000;
-} 
 
-.login-modal {
-  width: 90%;
-  max-width: 420px;
-  background: #fff;
-  border-radius: 20px;
-  padding: 20px;
-} */
 
 .login-modal {
   background: white;
@@ -353,5 +336,51 @@ body {
   text-decoration: underline;
 }
 
+/* =====================================================
+   FIX RESPONSIVE LOGIN (SOLO MÓVIL – NO AFECTA DESKTOP)
+===================================================== */
+@media (max-width: 768px) {
 
+  /* Overlay correcto en móvil */
+  .login-overlay {
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
+  /* Modal ocupa pantalla sin salirse */
+  .login-modal {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    flex-direction: column;
+  }
+
+  /* Ocultamos panel izquierdo */
+  .information {
+    display: none;
+  }
+
+  /* Formulario ocupa todo */
+  .form-information {
+    width: 100%;
+    padding: 25px 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-information-childs {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  /* Inputs nunca se salen */
+  .loginForm input {
+    width: 100%;
+  }
+
+  /* Evita scroll lateral */
+  body {
+    overflow-x: hidden;
+  }
+}
 
