@@ -1,4 +1,3 @@
-
 /******************************
  * SISTEMA DE TEST PNL
  ******************************/
@@ -9,33 +8,168 @@
 const questionsByLevel = {
   1: [
     {
-      q: "Cuando aplicas patrones de la Programación Neurolingüística, ¿qué sentido predomina?",
+      q: "Niño está corriendo dentro de la casa.",
       options: [
-        "Visualización",
-        "Auditivo",
-        "Kinestésico"
+        "No corras dentro de la casa",
+        "Te he dicho que no corras",
+        "Camina"
       ],
-      correct: 0
+      correct: 2
     },
     {
-      q: "Cuando recuerdas un momento feliz, ¿qué aparece primero?",
+      q: "Niña comiendo Espaguetti",
       options: [
-        "Una imagen",
-        "Un sonido",
-        "Una sensación"
-      ],
-      correct: 0
-    },
-    {
-      q: "Cuando alguien te explica algo, ¿qué te ayuda más?",
-      options: [
-        "Ver un esquema",
-        "Escuchar la explicación",
-        "Practicarlo"
+        "No te manches el vestido",
+        "Acércate el plato",
+        "Come con cuidado para que no te manches"
       ],
       correct: 1
-    }
-  ],
+    },
+    {
+      q: "Niña comiendo Espaguetti",
+      options: [
+        "No te maches el vestido",
+        "Acércate el plato",
+        "Come con cuidado para que no te manches"
+      ],
+      correct: 1
+    },
+    {
+      q: "Dejan la cocina sucia.",
+      options: [
+        "No dejes la cocina así sucia",
+        "Al terminar de comer ordena y limpia la mesa.",
+        "Nadie limpia nunca aquí."
+      ],
+      correct: 1
+    },
+    {
+      q: "Un niño dibuja en las paredes.",
+      options: [
+        "¡No dibujes en las paredes!",
+        "Te he dicho mil veces que no pintes ahí.",
+        "Por favor, dibuja en el papel o en tu cuaderno."
+      ],
+      correct: 2
+    },
+    {
+      q: "Alguien usa el celular en una cena familiar.",
+      options: [
+        "¡No uses el celular en la mesa!",
+        "Guarda el celular mientras comemos.",
+        "Siempre estás con el teléfono"
+      ],
+      correct: 1
+    },
+    {
+      q: "Tu pareja deja la ropa tirada en el suelo.",
+      options: [
+        "Al desvestirte deja la ropa en el almacén de la ropa sucia",
+        "Nunca recoges nada.",
+        "No tires la ropa al suelo."
+      ],
+      correct: 0
+    },
+    {
+      q: "Tu pareja deja los platos sin lavar en el fregadero.",
+      options: [
+        "Nunca lavas nada.",
+        "Después de comer lava los platos.",
+        "¡No dejes los platos sucios!"
+      ],
+      correct: 1
+    },
+    {
+      q: "Tu hijo deja los zapatos tirados en la entrada.",
+      options: [
+        "Por favor, guarda tus zapatos en el zapatero de tu cuarto.",
+        "¡No dejes los zapatos ahí!",
+        "Siempre dejas todo tirado."
+      ],
+      correct: 0
+    },
+    {
+      q: "Alguien sube el volumen de la televisión muy alto por la noche.",
+      options: [
+        "Nunca piensas en los demás.",
+        "¡No subas tanto la televisión!",
+        "Baja el volumen."
+      ],
+       correct: 2
+    },
+    {
+      q: "Tu adolescente entra y cierra la puerta de un portazo.",
+      options: [
+        "Cierra la puerta despacio.",
+        "Siempre haces lo mismo.",
+        "No azotes la puerta"
+      ],
+      correct: 0
+    },
+    {
+      q: "Alguien deja las luces encendidas al salir de una habitación.",
+      options: [
+        "Nadie apaga nada en esta casa.",
+        "Por favor, apaga la luz cuando salgas de la habitación.",
+        "¡No dejes las luces prendidas!"
+      ],
+      correct: 1
+    },
+    {
+      q: "Tu hijo pequeño grita dentro de la casa.",
+      options: [
+        "¡No grites!",
+        "Baja la voz, por favor.",
+        "Te he dicho que no grites."
+      ],
+      correct: 1
+    },
+    {
+      q: "Tu pareja usa tu toalla sin pedirla.",
+      options: [
+        "Luego de ducharte usa tu toalla.",
+        "¡No uses mi toalla!",
+        "Nunca respetas mis cosas."
+      ],
+      correct: 0
+    },
+    {
+      q: "Alguien deja la tapa del inodoro levantada.",
+      options: [
+        "Siempre olvidas bajarla.",
+        "¡No dejes la tapa arriba!",
+        "Después de usar el inodoro deja la tapa abajo."
+      ],
+      correct: 2
+    },
+    {
+      q: "Tu hijo come en el sofá y deja migas.",
+      options: [
+        "Para comer usa la mesa.",
+        "Nunca comas en el sofá.",
+        "¡No comas en el sofá!"
+      ],
+      correct: 0
+    },
+    {
+      q: "Alguien entra con zapatos sucios y ensucia el piso.",
+      options: [
+        "Antes de entrar quítate los zapatos.",
+        "Siempre ensucias todo.",
+        "¡No entres con zapatos sucios!"
+      ],
+      correct: 0
+    },
+    {
+      q: "Alguien deja la ropa húmeda en la lavadora mucho tiempo.",
+      options: [
+        "Por favor, saca tu ropa cuando termine el ciclo.",
+        "¡No dejes la ropa húmeda tanto tiempo!",
+        "Nadie saca la ropa nunca."
+      ],
+      correct: 0
+    },
+      ],
 
   2: [
     {
@@ -46,6 +180,15 @@ const questionsByLevel = {
         "Kinestésico"
       ],
       correct: 0
+    },
+    {
+      q: "Niña comiendo Espagueti",
+      options: [
+        "No te manches el vestido",
+        "Acércate el plato",
+        "Come con cuidado para que no te manches"
+      ],
+      correct: 1
     }
   ]
 };
@@ -62,15 +205,17 @@ let currentQuestions = [];
 //     INICIAR TEST (PÚBLICO)
 // =============================
 window.startPNLTest = function () {
+
+  // Validar nivel existente
+  if (!questionsByLevel[currentLevel]) {
+    alert("Ya completaste todos los niveles disponibles 🎉");
+    localStorage.setItem("pnl_level", 1);
+    currentLevel = 1;
+  }
+
   score = 0;
   currentIndex = 0;
-
   currentQuestions = questionsByLevel[currentLevel];
-
-  if (!currentQuestions) {
-    alert("No hay más niveles disponibles");
-    return;
-  }
 
   loadTestUI();
 };
@@ -79,7 +224,7 @@ window.startPNLTest = function () {
 //       CREAR CONTENEDOR
 // =============================
 function loadTestUI() {
-  document.body.style.overflow = "auto";
+  document.body.style.overflow = "hidden";
 
   let container = document.getElementById("testContainer");
 
@@ -115,7 +260,8 @@ function loadQuestion() {
 
   container.innerHTML = `
     <div style="
-      background:#fff;
+     /* background:#fff;*/
+      background: #A2D9CE;
       padding:30px;
       border-radius:15px;
       width:90%;
@@ -124,7 +270,16 @@ function loadQuestion() {
       text-align:center;
     ">
       <h2>Nivel ${currentLevel}</h2>
-      <p style="margin:20px 0;font-size:18px;">${q.q}</p>
+
+      <img 
+        src="pregunta.svg"
+        alt="Ilustración test"
+        style="width:100%;max-width:220px;margin:15px auto;display:block;"
+      >
+
+      <p style="margin-top:15px;font-size:20px;">
+        ${q.q}
+      </p>
 
       ${q.options.map((opt, i) => `
         <button
@@ -226,6 +381,13 @@ function repeatLevel() {
 
 function nextLevel() {
   currentLevel++;
+
+  if (!questionsByLevel[currentLevel]) {
+    alert("Has completado todos los niveles 🎉");
+    stopTest();
+    return;
+  }
+
   localStorage.setItem("pnl_level", currentLevel);
   score = 0;
   currentIndex = 0;
@@ -238,196 +400,3 @@ function stopTest() {
   if (container) container.remove();
   document.body.style.overflow = "auto";
 }
-
-
-/******************************
- * SISTEMA DE TEST PNL - VERSION MEJORADA
- ******************************/
-/*
-// Preguntas ofuscadas
-const encodedQuestions = [
-  atob("W3E9IlF1aWFuZG8gYXBsaWNhcyBnZW5lcmFsIGxvcyBwYXRyb25lcyBkZSBsYSBOTCIsIG9wdGlvbnM6WyJBcGxpY2FuIGxhIHZpc2l1YWxpemFjaW9uIiwiQXBsaWNhbiBsYSBhY3VzdGljYSIsIkFwbGljYW4gZWwgYXVkaXRpdm8iXSwgY29ycmVjdDoxXSw="),
-  atob("W3E9IkN1YW5kbyBlc3RhcyBiYWpvIGVuIHRyZXMgZW5yZXNzIGRlIGVzdHJlc3MiLCBvcHRpb25zOlsiVmlzdWFsIiwiQXVkaXRpdm8iLCBLbGluZXN0ZXNpY28iXSwgY29ycmVjdDowXSw="),
-  atob("W3E9IlF1ZSBlbGVtZW50byBkZSBsYSBOQyBoYWNlIHF1ZSB0ZSBtb3RpdmVzPyIsIG9wdGlvbnM6WyJBbG8iLCJVbiByZWN1ZXJkbyAiLCJVbiBzb25pZG8gZmxhbW1hbnRlIl0sIGNvcnJlY3Q6Ml1d")
-].map(item => JSON.parse(item)); 
-
-let currentLevel = 1;
-let score = 0;
-let currentQuestions = JSON.parse(JSON.stringify(encodedQuestions));
-let currentIndex = 0;
-
-function loadTestUI() {
-    document.body.style.overflow = "auto";
-
-    const container = document.createElement("div");
-    container.id = "testContainer";
-    container.style.position = "fixed"; // ✅ CLAVE
-    container.style.top = "0";
-    container.style.left = "0";
-    container.style.width = "100%";
-    container.style.minHeight = "100vh";
-    container.style.background = "rgba(0,0,0,0.7)";
-    container.style.backdropFilter = "blur(3px)";
-    container.style.padding = "40px 0";
-    container.style.zIndex = "99999";
-
-    document.body.appendChild(container);
-
-    loadQuestion();
-}
-
-
-// =============================
-//       MOSTRAR PREGUNTA
-// =============================
-function loadQuestion() {
-    const container = document.getElementById("testContainer");
-    container.innerHTML = "";
-
-    if (currentIndex >= currentQuestions.length) {
-        showLevelResult();
-        return;
-    }
-
-    const q = currentQuestions[currentIndex];
-
-    container.innerHTML = `
-        <div style="background:white; padding:30px; border-radius:15px; width:90%; max-width:500px; margin:auto; text-align:center;">
-            <h2>Nivel ${currentLevel}</h2>
-            <p style="margin-top:20px; font-size:20px;">${q.q}</p>
-
-            ${q.options.map((o,i)=>`
-                <button style="
-                    width:100%;
-                    padding:12px;
-                    margin-top:10px;
-                    border:none;
-                    background:#4a74f5;
-                    color:white;
-                    font-size:16px;
-                    border-radius:10px;
-                    cursor:pointer;
-                " onclick="answer(${i})">${o}</button>
-            `).join("")}
-        </div>
-    `;
-    
-    window.scrollTo(0, 0); // evitar quedar atrapado abajo
-}
-
-// =============================
-//       EVALUAR RESPUESTA
-// =============================
-function answer(optionIndex) {
-    const q = currentQuestions[currentIndex];
-    if (optionIndex === q.correct) score++;
-
-    currentIndex++;
-    loadQuestion();
-}
-
-// =============================
-//      MOSTRAR RESULTADO
-// =============================
-function showLevelResult() {
-    const container = document.getElementById("testContainer");
-
-    const passed = score >= Math.ceil(currentQuestions.length * 0.85);
-
-    container.innerHTML = `
-        <div style="background:white; padding:30px; border-radius:15px; width:90%; max-width:500px; margin:auto; text-align:center;">
-            <h2>Resultado del Nivel ${currentLevel}</h2>
-
-            <div style="
-                width:130px;
-                height:130px;
-                border-radius:50%;
-                background:${passed ? "green" : "red"};
-                margin:25px auto;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                font-size:35px;
-                color:white;
-                font-weight:bold;
-            ">
-                ${score}
-            </div>
-
-            ${
-                passed
-                ? `<button onclick="continueTest()" style="
-                        background:#28a745;
-                        padding:12px;
-                        color:white;
-                        width:100%;
-                        border:none;
-                        border-radius:10px;
-                        font-size:18px;
-                        margin-top:10px;
-                    ">Continuar</button>`
-                : `<button onclick="repeatTest()" style="
-                        background:#ff9800;
-                        padding:12px;
-                        color:white;
-                        width:100%;
-                        border:none;
-                        border-radius:10px;
-                        font-size:18px;
-                        margin-top:10px;
-                    ">Repetir prueba</button>`
-            }
-
-            <button onclick="stopTest()" style="
-                background:#b71c1c;
-                padding:12px;
-                color:white;
-                width:100%;
-                border:none;
-                border-radius:10px;
-                font-size:18px;
-                margin-top:10px;
-            ">Detener Test</button>
-        </div>
-    `;
-
-    localStorage.setItem("pnl_level", currentLevel);
-}
-
-// =============================
-//     REPETIR MISMO NIVEL
-// =============================
-function repeatTest() {
-    score = 0;
-    currentIndex = 0;
-    loadQuestion();
-}
-
-// =============================
-//   CONTINUAR SIGUIENTE NIVEL
-// =============================
-function continueTest() {
-    score = 0;
-    currentIndex = 0;
-    currentLevel++;
-    
-    // aquí agregarás tus preguntas reales por nivel
-    // por ahora repite las mismas
-    loadQuestion();
-}
-
-// =============================
-//        DETENER TEST
-// =============================
-function stopTest() {
-    document.getElementById("testContainer").remove();
-    document.body.style.overflow = "auto";
-}
-
-// =============================
-//     FUNCIÓN PÚBLICA PARA USAR DESDE LOGIN
-// =============================
-window.startPNLTest = function () {
-    loadTestUI();
-};
-*/
