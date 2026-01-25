@@ -11,24 +11,15 @@ const questionsByLevel = {
       q: "Niño está corriendo dentro de la casa.",
       options: [
         "No corras dentro de la casa",
-        "Te he dicho que no corras",
+        "Te he dicho que no corras.",
         "Camina"
       ],
       correct: 2
     },
     {
-      q: "Niña comiendo Espaguetti",
+      q: "Niña comiendo Espaguetti.",
       options: [
         "No te manches el vestido",
-        "Acércate el plato",
-        "Come con cuidado para que no te manches"
-      ],
-      correct: 1
-    },
-    {
-      q: "Niña comiendo Espaguetti",
-      options: [
-        "No te maches el vestido",
         "Acércate el plato",
         "Come con cuidado para que no te manches"
       ],
@@ -95,7 +86,7 @@ const questionsByLevel = {
         "¡No subas tanto la televisión!",
         "Baja el volumen."
       ],
-       correct: 2
+      correct: 2
     },
     {
       q: "Tu adolescente entra y cierra la puerta de un portazo.",
@@ -169,26 +160,41 @@ const questionsByLevel = {
       ],
       correct: 0
     },
+    {
+      q: "Tu hijo juega con la pelota dentro de la casa.",
+      options: [
+        "Te he dicho mil veces ya.",
+        "Juega con la pelota en el jardín.",
+        "¡No juegues con la pelota adentro!"
       ],
+      correct: 1
+    },
+    {
+      q: "Alguien usa el último rollo de papel higiénico sin reponer.",
+      options: [
+        "Siempre pasa lo mismo.",
+        "¡No uses el último sin poner otro!",
+        "Cuando se termine el rollo pon uno nuevo, por favor."
+      ],
+      correct: 2
+    },
+    {
+      q: "Tu hijo deja la mochila en medio del pasillo.",
+      options: [
+        "Siempre tropiezo con tus cosas.",
+        "Al llegar guarda tu mochila en tu cuarto.",
+        "¡No dejes la mochila ahí!"
+      ],
+      correct: 1
+    }
+
+  ],
 
   2: [
     {
       q: "¿Qué sistema representacional usas al imaginar tu futuro?",
-      options: [
-        "Visual",
-        "Auditivo",
-        "Kinestésico"
-      ],
+      options: ["Visual", "Auditivo", "Kinestésico"],
       correct: 0
-    },
-    {
-      q: "Niña comiendo Espagueti",
-      options: [
-        "No te manches el vestido",
-        "Acércate el plato",
-        "Come con cuidado para que no te manches"
-      ],
-      correct: 1
     }
   ]
 };
@@ -200,28 +206,135 @@ let currentLevel = parseInt(localStorage.getItem("pnl_level")) || 1;
 let score = 0;
 let currentIndex = 0;
 let currentQuestions = [];
+let timer = null;
+let timeLeft = 15;
+const TIME_LIMIT = 15;
 
 // =============================
-//     INICIAR TEST (PÚBLICO)
+//     FUNCIONES UTILIDAD
 // =============================
+function shuffleArray(array) {
+  return [...array].sort(() => Math.random() - 0.5);
+}
+function startTimer() {
+  clearInterval(timer);
+  timeLeft = TIME_LIMIT;
+
+  timer = setInterval(() => {
+    timeLeft--;
+
+    const timerEl = document.getElementById("timer");
+    if (timerEl) {
+      timerEl.textContent = timeLeft;
+    }
+
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      timeExpired();
+    }
+  }, 1000);
+}
+
+function timeExpired() {
+  const container = document.getElementById("testContainer");
+
+  container.innerHTML = `
+    <div style="
+      background:#fff;
+      padding:30px;
+      border-radius:15px;
+      width:90%;
+      max-width:400px;
+      margin:auto;
+      text-align:center;
+    ">
+      <h2>⏱ Excediste el tiempo para responder</h2>
+      <p>Serás devuelto a la pantalla principal</p>
+    </div>
+  `;
+
+  setTimeout(() => {
+    stopTest();
+  }, 2500);
+}
+// =============================
+//     INICIAR TEST
+// =============================
+
 window.startPNLTest = function () {
 
-  // Validar nivel existente
   if (!questionsByLevel[currentLevel]) {
-    alert("Ya completaste todos los niveles disponibles 🎉");
+    alert("Ya completaste todos los niveles 🎉");
     localStorage.setItem("pnl_level", 1);
     currentLevel = 1;
   }
 
   score = 0;
   currentIndex = 0;
-  currentQuestions = questionsByLevel[currentLevel];
 
-  loadTestUI();
+  const allQuestions = questionsByLevel[currentLevel];
+  currentQuestions = shuffleArray(allQuestions).slice(0, 20);
+
+  showInstructions(); // ⬅️ EN VEZ DE loadTestUI()
 };
 
+function showInstructions() {
+  document.body.style.overflow = "hidden";
+
+  let container = document.getElementById("testContainer");
+
+  if (!container) {
+    container = document.createElement("div");
+    container.id = "testContainer";
+    container.style.position = "fixed";
+    container.style.inset = "0";
+    container.style.background = "rgba(0,0,0,0.7)";
+    container.style.zIndex = "99999";
+    container.style.display = "flex";
+    container.style.alignItems = "center";
+    container.style.justifyContent = "center";
+    document.body.appendChild(container);
+  }
+
+  container.innerHTML = `
+    <div style="
+      background:#fff;
+      padding:30px;
+      border-radius:15px;
+      width:90%;
+      max-width:500px;
+      text-align:center;
+    ">
+      <h2>Instrucciones</h2>
+
+      <p style="margin-top:15px;font-size:18px;">
+        A continuación se presenta una oración de un evento con
+        <strong>tres posibles respuestas</strong>.
+        <br><br>
+        Selecciona la opción correcta usando el
+        <strong>lenguaje asertivo</strong>.
+      </p>
+
+      <button onclick="loadTestUI()" style="
+        margin-top:25px;
+        width:100%;
+        padding:12px;
+        background:#286bcf;
+        color:white;
+        border:none;
+        border-radius:10px;
+        font-size:18px;
+        cursor:pointer;
+      ">
+        Continuar
+      </button>
+    </div>
+  `;
+}
+
+
 // =============================
-//       CREAR CONTENEDOR
+//       CONTENEDOR
 // =============================
 function loadTestUI() {
   document.body.style.overflow = "hidden";
@@ -237,7 +350,6 @@ function loadTestUI() {
     container.style.zIndex = "99999";
     container.style.padding = "40px 0";
     container.style.overflowY = "auto";
-
     document.body.appendChild(container);
   }
 
@@ -248,6 +360,8 @@ function loadTestUI() {
 //       MOSTRAR PREGUNTA
 // =============================
 function loadQuestion() {
+  clearInterval(timer);
+  timeLeft = TIME_LIMIT;
   const container = document.getElementById("testContainer");
   container.innerHTML = "";
 
@@ -257,18 +371,63 @@ function loadQuestion() {
   }
 
   const q = currentQuestions[currentIndex];
+  const questionNumber = currentIndex + 1;
 
   container.innerHTML = `
     <div style="
-     /* background:#fff;*/
-      background: #A2D9CE;
+      background:#A2D9CE;
       padding:30px;
       border-radius:15px;
       width:90%;
       max-width:500px;
       margin:auto;
+      position:relative;
       text-align:center;
     ">
+    <!-- CERRAR TEST -->
+
+    <span onclick="stopTest()" style="
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:28px;
+    font-weight:bold;
+    cursor:pointer;
+    color:black;
+
+    ">
+    X
+    </span>
+
+   
+    
+     <!-- NUMERO DE PREGUNTA -->
+     <div style="
+      position:absolute;
+      top:50px;
+      left:20px;
+      font-size:28px;
+      font-weight:bold;
+      color:#286bcf;
+      ">
+      ${questionNumber} / ${currentQuestions.length}
+     </div>
+
+      <!-- CRONÓMETRO -->
+      <div style="
+      position:absolute;
+      top:15px;
+      left:20px;
+      font-size:22px;
+      font-weight:bold;
+      color:#b71c1c;
+     ">
+     ⏱ <span id="timer">15</span>s
+      </div>
+
+
+
+      
       <h2>Nivel ${currentLevel}</h2>
 
       <img 
@@ -302,12 +461,24 @@ function loadQuestion() {
   `;
 
   window.scrollTo(0, 0);
+  startTimer();
 }
 
 // =============================
 //       RESPONDER
 // =============================
+/*function answer(optionIndex) {
+  if (optionIndex === currentQuestions[currentIndex].correct) {
+    score++;
+  }
+
+  currentIndex++;
+  loadQuestion();
+} */
+
 function answer(optionIndex) {
+  clearInterval(timer);
+
   if (optionIndex === currentQuestions[currentIndex].correct) {
     score++;
   }
@@ -376,6 +547,7 @@ function showResult() {
 function repeatLevel() {
   score = 0;
   currentIndex = 0;
+  currentQuestions = shuffleArray(questionsByLevel[currentLevel]).slice(0, 20);
   loadQuestion();
 }
 
@@ -391,7 +563,7 @@ function nextLevel() {
   localStorage.setItem("pnl_level", currentLevel);
   score = 0;
   currentIndex = 0;
-  currentQuestions = questionsByLevel[currentLevel];
+  currentQuestions = shuffleArray(questionsByLevel[currentLevel]).slice(0, 20);
   loadQuestion();
 }
 
@@ -400,3 +572,11 @@ function stopTest() {
   if (container) container.remove();
   document.body.style.overflow = "auto";
 }
+// =============================
+//   CONFIRMAR CIERRE DEL TEST
+// =============================
+window.confirmCloseTest = function () {
+  if (confirm("¿Deseas salir del test? Perderás tu progreso actual.")) {
+    stopTest();
+  }
+};
