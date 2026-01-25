@@ -313,6 +313,9 @@ function showInstructions() {
         <br><br>
         Selecciona la opción correcta usando el
         <strong>lenguaje asertivo</strong>.
+        <br><br>
+        Cada pregunta tiene un tiempo máximo de
+        <strong>15 segundos</strong>.
       </p>
 
       <button onclick="loadTestUI()" style="
