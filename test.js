@@ -191,11 +191,371 @@ const questionsByLevel = {
   ],
 
   2: [
-    {
-      q: "¿Qué sistema representacional usas al imaginar tu futuro?",
-      options: ["Visual", "Auditivo", "Kinestésico"],
-      correct: 0
-    }
+    // ===== NIVEL 2 (90 PREGUNTAS CON EXPLICACIÓN) =====
+{
+  q:"No me contestó el WhatsApp, seguro que ya no quiere saber nada de mí",
+  options:["Generalización","Supresión","Distorsión"],
+  correct:2,
+  explanation:"Lectura mental. ¿Cómo sabes exactamente qué está pensando? ¿Qué otra razón podría haber para no contestar?"
+},
+{
+  q:"Si realmente me quisieras, no me dirías eso",
+  options:["Distorsión","Generalización","Supresión"],
+  correct:0,
+  explanation:"Equivalencia compleja. ¿Decir eso significa necesariamente que no te quiero?"
+},
+{
+  q:"Me ignora, seguro que me odia",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:1,
+  explanation:"Lectura mental. ¿Cómo sabes que te odia?"
+},
+{
+  q:"Me gritó, eso significa que ya no me respeta",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:1,
+  explanation:"Equivalencia compleja. ¿Gritar implica no respetar?"
+},
+{
+  q:"No me felicitó por mi logro, tiene envidia de mí",
+  options:["Generalización","Supresión","Distorsión"],
+  correct:2,
+  explanation:"Lectura mental. ¿Cómo sabes que es envidia?"
+},
+{
+  q:"Si me amara de verdad, sabría lo que necesito sin que se lo diga",
+  options:["Supresión","Generalización","Distorsión"],
+  correct:2,
+  explanation:"Presuposición. ¿Es posible amar sin adivinar todo?"
+},
+{
+  q:"Su silencio me está matando por dentro",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:1,
+  explanation:"Causa-efecto. ¿Cómo exactamente su silencio te afecta?"
+},
+{
+  q:"Me rechazó porque soy un perdedor",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:1,
+  explanation:"Equivalencia compleja. ¿Un rechazo define quién eres?"
+},
+{
+  q:"Cuando no me mira a los ojos es porque me miente",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:1,
+  explanation:"Lectura mental. ¿No mirar siempre significa mentir?"
+},
+{
+  q:"Si fuera una buena madre, no trabajaría tanto",
+  options:["Generalización","Supresión","Distorsión"],
+  correct:2,
+  explanation:"Presuposición. ¿Trabajar impide ser buena madre?"
+},
+{
+  q:"Me duele la cabeza porque me estresas",
+  options:["Supresión","Generalización","Distorsión"],
+  correct:2,
+  explanation:"Causa-efecto. ¿Eres tú el único responsable?"
+},
+{
+  q:"No me abraza porque ya no siente nada por mí",
+  options:["Distorsión","Generalización","Supresión"],
+  correct:0,
+  explanation:"Lectura mental. ¿No abrazar significa no amar?"
+},
+{
+  q:"Si tuviera éxito sería feliz",
+  options:["Supresión","Generalización","Distorsión"],
+  correct:2,
+  explanation:"Equivalencia compleja. ¿Éxito garantiza felicidad?"
+},
+{
+  q:"Me evita porque me desprecia",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:1,
+  explanation:"Lectura mental. ¿Qué evidencia tienes?"
+},
+{
+  q:"Mi ansiedad no me deja vivir",
+  options:["Supresión","Generalización","Distorsión"],
+  correct:2,
+  explanation:"Nominalización. ¿Qué puedes hacer aun con ansiedad?"
+},
+{
+  q:"Si me quisiera no me criticaría",
+  options:["Supresión","Distorsión","Generalización"],
+  correct:1,
+  explanation:"Equivalencia compleja. ¿Criticar implica no querer?"
+},
+{
+  q:"Su enojo es mi culpa",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:1,
+  explanation:"Causa-efecto. ¿Eres 100% responsable?"
+},
+{
+  q:"No me saluda porque me considera inferior",
+  options:["Distorsión","Supresión","Generalización"],
+  correct:0,
+  explanation:"Lectura mental. ¿Cómo lo sabes?"
+},
+{
+  q:"El fracaso prueba que soy un inútil",
+  options:["Distorsión","Generalización","Supresión"],
+  correct:0,
+  explanation:"Equivalencia compleja. ¿Un fracaso define todo?"
+},
+{
+  q:"Si fuera más fuerte no me afectaría",
+  options:["Distorsión","Generalización","Supresión"],
+  correct:0,
+  explanation:"Presuposición. ¿Ser fuerte es no sentir?"
+},
+
+// ---- SUPRESIÓN ----
+{
+  q:"No puedo más",
+  options:["Supresión","Generalización","Distorsión"],
+  correct:0,
+  explanation:"¿No puedes más qué exactamente?"
+},
+{
+  q:"Me duele",
+  options:["Distorsión","Generalización","Supresión"],
+  correct:2,
+  explanation:"¿Dónde te duele exactamente?"
+},
+{
+  q:"La gente es mala",
+  options:["Generalización","Supresión","Lectura mental"],
+  correct:1,
+  explanation:"¿Qué gente exactamente?"
+},
+{
+  q:"No sirve de nada",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:2,
+  explanation:"¿Para qué no sirve?"
+},
+{
+  q:"Me rechazan siempre",
+  options:["Supresión","Generalización","Equivalencia compleja"],
+  correct:0,
+  explanation:"¿Quién te rechaza?"
+},
+{
+  q:"Es difícil",
+  options:["Supresión","Nominalización","Presuposición"],
+  correct:0,
+  explanation:"¿Qué es difícil?"
+},
+{
+  q:"No entiendo",
+  options:["Distorsión","Supresión","Generalización"],
+  correct:1,
+  explanation:"¿Qué no entiendes?"
+},
+{
+  q:"Me molesta mucho",
+  options:["Supresión","Generalización","Causa-efecto"],
+  correct:0,
+  explanation:"¿Qué te molesta?"
+},
+{
+  q:"No tengo tiempo",
+  options:["Generalización","Supresión","Distorsión"],
+  correct:1,
+  explanation:"¿Tiempo para qué?"
+},
+{
+  q:"Es caro",
+  options:["Distorsión","Supresión","Generalización"],
+  correct:1,
+  explanation:"¿Comparado con qué?"
+},
+
+// ---- GENERALIZACIÓN ----
+{
+  q:"Siempre me pasa lo peor",
+  options:["Supresión","Generalización","Distorsión"],
+  correct:1,
+  explanation:"¿Siempre? ¿Nunca ha pasado algo bueno?"
+},
+{
+  q:"Todos los hombres mienten",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:0,
+  explanation:"¿Todos sin excepción?"
+},
+{
+  q:"Nunca voy a ser feliz",
+  options:["Supresión","Distorsión","Generalización"],
+  correct:2,
+  explanation:"¿Nunca? ¿Qué evidencia tienes?"
+},
+{
+  q:"Nadie me quiere de verdad",
+  options:["Distorsión","Generalización","Supresión"],
+  correct:1,
+  explanation:"¿Nadie?"
+},
+{
+  q:"Todo me sale mal",
+  options:["Generalización","Supresión","Distorsión"],
+  correct:0,
+  explanation:"¿Todo? ¿Qué sí ha salido bien?"
+},
+{
+  q:"Ninguna dieta funciona",
+  options:["Supresión","Generalización","Nominalización"],
+  correct:1,
+  explanation:"¿Ninguna?"
+},
+{
+  q:"Siempre llego tarde",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:0,
+  explanation:"¿Siempre?"
+},
+{
+  q:"Todos los políticos roban",
+  options:["Supresión","Generalización","Lectura mental"],
+  correct:1,
+  explanation:"¿Todos?"
+},
+{
+  q:"Nunca tengo suerte",
+  options:["Distorsión","Supresión","Generalización"],
+  correct:2,
+  explanation:"¿Nunca?"
+},
+{
+  q:"Ningún amigo es leal",
+  options:["Generalización","Supresión","Distorsión"],
+  correct:0,
+  explanation:"¿Ningún?"
+},
+{
+  q:"Todo el mundo me juzga",
+  options:["Supresión","Generalización","Lectura mental"],
+  correct:1,
+  explanation:"¿Todo el mundo?"
+},
+{
+  q:"Siempre me equivoco",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:0,
+  explanation:"¿Siempre?"
+},
+{
+  q:"Nadie entiende mi dolor",
+  options:["Distorsión","Supresión","Generalización"],
+  correct:2,
+  explanation:"¿Nadie?"
+},
+{
+  q:"Ningún trabajo me gusta",
+  options:["Supresión","Generalización","Nominalización"],
+  correct:1,
+  explanation:"¿Ninguno?"
+},
+{
+  q:"Siempre me abandonan",
+  options:["Generalización","Supresión","Distorsión"],
+  correct:0,
+  explanation:"¿Siempre?"
+},
+{
+  q:"Todo es culpa mía",
+  options:["Distorsión","Generalización","Supresión"],
+  correct:1,
+  explanation:"¿Todo?"
+},
+{
+  q:"Nunca cambio",
+  options:["Supresión","Generalización","Nominalización"],
+  correct:1,
+  explanation:"¿Nunca?"
+},
+{
+  q:"Ninguna relación dura",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:0,
+  explanation:"¿Ninguna?"
+},
+{
+  q:"Todos me usan",
+  options:["Supresión","Generalización","Lectura mental"],
+  correct:1,
+  explanation:"¿Todos?"
+},
+{
+  q:"Siempre pierdo",
+  options:["Generalización","Supresión","Distorsión"],
+  correct:0,
+  explanation:"¿Siempre?"
+},
+{
+  q:"Nadie me respeta",
+  options:["Distorsión","Supresión","Generalización"],
+  correct:2,
+  explanation:"¿Nadie?"
+},
+{
+  q:"Todo está perdido",
+  options:["Supresión","Generalización","Nominalización"],
+  correct:1,
+  explanation:"¿Todo?"
+},
+{
+  q:"Nunca aprenderé",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:0,
+  explanation:"¿Nunca?"
+},
+{
+  q:"Ningún hombre es bueno",
+  options:["Supresión","Generalización","Lectura mental"],
+  correct:1,
+  explanation:"¿Ninguno?"
+},
+{
+  q:"Siempre me siento solo",
+  options:["Generalización","Supresión","Distorsión"],
+  correct:0,
+  explanation:"¿Siempre?"
+},
+{
+  q:"Todo el mundo miente",
+  options:["Distorsión","Generalización","Supresión"],
+  correct:1,
+  explanation:"¿Todo el mundo?"
+},
+{
+  q:"Nunca consigo lo que quiero",
+  options:["Supresión","Generalización","Nominalización"],
+  correct:1,
+  explanation:"¿Nunca?"
+},
+{
+  q:"Ninguna ayuda sirve",
+  options:["Generalización","Distorsión","Supresión"],
+  correct:0,
+  explanation:"¿Ninguna?"
+},
+{
+  q:"Siempre me critican",
+  options:["Supresión","Generalización","Lectura mental"],
+  correct:1,
+  explanation:"¿Siempre?"
+},
+{
+  q:"Nadie puede conmigo",
+  options:["Generalización","Supresión","Distorsión"],
+  correct:0,
+  explanation:"¿Nadie?"
+}
   ]
 };
 
@@ -478,17 +838,98 @@ function loadQuestion() {
   currentIndex++;
   loadQuestion();
 } */
-
+/*
 function answer(optionIndex) {
   clearInterval(timer);
 
   if (optionIndex === currentQuestions[currentIndex].correct) {
     score++;
   }
+ */
+function answer(optionIndex) {
+  clearInterval(timer);
 
+  const q = currentQuestions[currentIndex];
+  const isCorrect = optionIndex === q.correct;
+
+  if (isCorrect) score++;
+
+  // 👉 SOLO NIVEL 2 muestra explicación
+  if (currentLevel === 2) {
+    showFeedback(q, isCorrect);
+  } else {
+    currentIndex++;
+    loadQuestion();
+  }
+}
+function nextQuestion() {
   currentIndex++;
   loadQuestion();
 }
+/*
+function answer(optionIndex) {
+  clearInterval(timer);
+
+  const q = currentQuestions[currentIndex];
+  const isCorrect = optionIndex === q.correct;
+
+  if (isCorrect) score++;
+
+  showFeedback(q, isCorrect);
+}
+
+  currentIndex++;
+  loadQuestion();
+}*/
+
+function showFeedback(question, isCorrect) {
+  const container = document.getElementById("testContainer");
+
+  container.innerHTML = `
+    <div style="
+      background:#fff;
+      padding:30px;
+      border-radius:15px;
+      width:90%;
+      max-width:500px;
+      margin:auto;
+      text-align:center;
+    ">
+      <h2>${isCorrect ? "✅ Correcto" : "❌ Incorrecto"}</h2>
+
+      <p style="margin-top:15px;font-size:18px;">
+        <strong>Explicación:</strong><br>
+        ${question.explanation || "Sin explicación"}
+      </p>
+
+      <button onclick="nextQuestion()" style="
+        margin-top:20px;
+        width:100%;
+        padding:12px;
+        background:#286bcf;
+        color:white;
+        border:none;
+        border-radius:10px;
+        font-size:18px;
+        cursor:pointer;
+      ">
+        Siguiente
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion() {
+  currentIndex++;
+  loadQuestion();
+}
+
+/*if (currentLevel === 2) {
+  showFeedback(q, isCorrect);
+} else {
+  currentIndex++;
+  loadQuestion();
+}*/
 
 // =============================
 //       RESULTADO
