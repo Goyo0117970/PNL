@@ -414,14 +414,23 @@ body {
   color: #333;
   line-height: 1.5;
 }
+
+
 @media (max-width: 768px) {
   .welcome-box {
     position: static;
     margin: 20px auto;
+    padding: 20px;
+    width: 90%;           /* 🔥 ocupa casi todo el ancho */
+    max-width: none;      /* 🔥 elimina el límite de 320px */
     text-align: center;
   }
 
   .welcome-box h1 {
-    font-size: 30px;
+    font-size: 28px;      /* 🔥 mejor proporción móvil */
+  }
+
+  .welcome-box p {
+    font-size: 15px;
   }
 }
