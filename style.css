@@ -385,33 +385,39 @@ body {
 }
 
 /* ===== BIENVENIDA LADO IZQUIERDO ===== */
+.welcome-box {
+  background: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
 
 .welcome-box {
   position: absolute;
   left: 60px;
   top: 140px;
 
-  background: rgba(255, 255, 255, 0.9);
+ /* background: rgba(255, 255, 255, 0.9);*/
   padding: 25px;
   border-radius: 15px;
 
   max-width: 320px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  /*box-shadow: 0 8px 20px rgba(0,0,0,0.2);*/
 
   z-index: 2; /* 🔥 importante para que esté sobre la imagen */
 }
 
 /* TEXTO GRANDE */
 .welcome-box h1 {
-  font-size: 42px;
-  color: #286bcf;
+  font-size: 46px;
+  color: #f0f4f5;
   margin-bottom: 10px;
 }
 
 /* TEXTO DEBAJO */
 .welcome-box p {
   font-size: 16px;
-  color: #333;
+  color: #0c0b0b;
   line-height: 1.5;
 }
 
@@ -423,6 +429,7 @@ body {
     justify-content: flex-start; /* 🔥 CLAVE: lo sube hacia arriba */
     padding-top: 20px;
   }
+
 
   .welcome-box {
     position: static;
@@ -442,6 +449,6 @@ body {
   }
 
   .welcome-box p {
-    font-size: 15px;
+    font-size: 17px;
   }
 }
