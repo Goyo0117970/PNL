@@ -417,17 +417,28 @@ body {
 
 
 @media (max-width: 768px) {
+
+  .hero {
+    flex-direction: column;
+    justify-content: flex-start; /* 🔥 CLAVE: lo sube hacia arriba */
+    padding-top: 20px;
+  }
+
   .welcome-box {
     position: static;
-    margin: 20px auto;
+    margin: 10px auto 20px auto; /* 🔥 espacio arriba */
     padding: 20px;
-    width: 90%;           /* 🔥 ocupa casi todo el ancho */
-    max-width: none;      /* 🔥 elimina el límite de 320px */
+    width: 90%;
+    max-width: none;
     text-align: center;
   }
 
+  .hero-content {
+    margin-top: 10px; /* 🔥 separa "Descubre tu nivel" */
+  }
+
   .welcome-box h1 {
-    font-size: 28px;      /* 🔥 mejor proporción móvil */
+    font-size: 28px;
   }
 
   .welcome-box p {
