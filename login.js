@@ -63,13 +63,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 🆕 REGISTRO AUTOMÁTICO
     if (index === -1) {
-      const newUser = { email, password };
+      /*const newUser = { email, password };*/
+      const newUser = { email, password, level: 1 };
       users.push(newUser);
       localStorage.setItem("pnl_users", JSON.stringify(users));
+
       localStorage.setItem("pnl_logged", JSON.stringify(newUser));
+      
 
       loginMsg.textContent = "Usuario registrado satisfactoriamente";
       loginMsg.style.color = "green";
+
+      localStorage.setItem("pnl_level", 1);
 
       iniciarTest();
       return;
@@ -83,11 +88,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ✅ LOGIN CORRECTO
     localStorage.setItem("pnl_logged", JSON.stringify(users[index]));
+    localStorage.setItem("pnl_level", users[index].level || 1);
+
+    
     loginMsg.textContent = "Ingreso correcto";
     loginMsg.style.color = "green";
 
     iniciarTest();
   });
+  
 
   // ===== INICIAR TEST =====
   function iniciarTest() {

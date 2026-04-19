@@ -682,7 +682,9 @@ const questionsByLevel = {
 // =============================
 //       VARIABLES GLOBALES
 // =============================
-let currentLevel = parseInt(localStorage.getItem("pnl_level")) || 1;
+/*let currentLevel = parseInt(localStorage.getItem("pnl_level")) || 1;*/
+let loggedUser = JSON.parse(localStorage.getItem("pnl_logged"));
+let currentLevel = loggedUser?.level || 1;
 let score = 0;
 let currentIndex = 0;
 let currentQuestions = [];
@@ -718,6 +720,9 @@ function startTimer() {
 function timeExpired() {
   const container = document.getElementById("testContainer");
 
+  // 🔥 VALIDACIÓN CLAVE
+  if (!container) return;
+
   container.innerHTML = `
     <div style="
       background:#fff;
@@ -737,11 +742,13 @@ function timeExpired() {
     stopTest();
   }, 2500);
 }
+
+
 // =============================
 //     INICIAR TEST
 // =============================
 
-window.startPNLTest = function () {
+/*window.startPNLTest = function () {
 
   if (!questionsByLevel[currentLevel]) {
     alert("Ya completaste todos los niveles 🎉");
@@ -756,6 +763,25 @@ window.startPNLTest = function () {
   currentQuestions = shuffleArray(allQuestions).slice(0, 20);
 
   showInstructions(); // ⬅️ EN VEZ DE loadTestUI()
+};*/
+
+window.startPNLTest = function () {
+
+  let loggedUser = JSON.parse(localStorage.getItem("pnl_logged"));
+  currentLevel = loggedUser?.level || 1;
+
+  if (!questionsByLevel[currentLevel]) {
+    alert("Ya completaste todos los niveles 🎉");
+    currentLevel = 1;
+  }
+
+  score = 0;
+  currentIndex = 0;
+
+  const allQuestions = questionsByLevel[currentLevel];
+  currentQuestions = shuffleArray(allQuestions).slice(0, 20);
+
+  showInstructions();
 };
 
 function showInstructions() {
@@ -950,22 +976,8 @@ function loadQuestion() {
 // =============================
 //       RESPONDER
 // =============================
-/*function answer(optionIndex) {
-  if (optionIndex === currentQuestions[currentIndex].correct) {
-    score++;
-  }
 
-  currentIndex++;
-  loadQuestion();
-} */
-/*
-function answer(optionIndex) {
-  clearInterval(timer);
 
-  if (optionIndex === currentQuestions[currentIndex].correct) {
-    score++;
-  }
- */
 function answer(optionIndex) {
   clearInterval(timer);
 
@@ -986,21 +998,6 @@ function nextQuestion() {
   currentIndex++;
   loadQuestion();
 }
-/*
-function answer(optionIndex) {
-  clearInterval(timer);
-
-  const q = currentQuestions[currentIndex];
-  const isCorrect = optionIndex === q.correct;
-
-  if (isCorrect) score++;
-
-  showFeedback(q, isCorrect);
-}
-
-  currentIndex++;
-  loadQuestion();
-}*/
 
 function showFeedback(question, isCorrect) {
   const container = document.getElementById("testContainer");
@@ -1015,12 +1012,16 @@ function showFeedback(question, isCorrect) {
       margin:auto;
       text-align:center;
     ">
-      <h2>${isCorrect ? "✅ Correcto" : "❌ Incorrecto"}</h2>
+      <h2>${isCorrect ? "✅ Correcto" : "❌ Respuesta incorrecta"}</h2>
 
-      <p style="margin-top:15px;font-size:18px;">
-        <strong>Explicación:</strong><br>
-        ${question.explanation || "Sin explicación"}
-      </p>
+      ${
+        isCorrect
+          ? `<p style="margin-top:15px;font-size:18px;">
+              <strong>Explicación:</strong><br>
+              ${question.explanation || "Sin explicación"}
+            </p>`
+          : ""
+      }
 
       <button onclick="nextQuestion()" style="
         margin-top:20px;
@@ -1039,17 +1040,13 @@ function showFeedback(question, isCorrect) {
   `;
 }
 
+
 function nextQuestion() {
   currentIndex++;
   loadQuestion();
 }
 
-/*if (currentLevel === 2) {
-  showFeedback(q, isCorrect);
-} else {
-  currentIndex++;
-  loadQuestion();
-}*/
+
 
 // =============================
 //       RESULTADO
@@ -1101,7 +1098,16 @@ function showResult() {
   `;
 
   if (passed) {
-    localStorage.setItem("pnl_level", currentLevel + 1);
+    // actualizar nivel en usuario logueado
+    let users = JSON.parse(localStorage.getItem("pnl_users")) || [];
+    let logged = JSON.parse(localStorage.getItem("pnl_logged"));
+    const i = users.findIndex(u => u.email === logged.email);
+    if (i !== -1) {
+  users[i].level = currentLevel + 1;
+  localStorage.setItem("pnl_users", JSON.stringify(users));
+  localStorage.setItem("pnl_logged", JSON.stringify(users[i]));
+ /* localStorage.setItem("pnl_level", currentLevel + 1);*/
+}
   }
 }
 
@@ -1115,8 +1121,20 @@ function repeatLevel() {
   loadQuestion();
 }
 
+
 function nextLevel() {
   currentLevel++;
+
+  let users = JSON.parse(localStorage.getItem("pnl_users")) || [];
+  let logged = JSON.parse(localStorage.getItem("pnl_logged"));
+
+  const i = users.findIndex(u => u.email === logged.email);
+
+  if (i !== -1) {
+    users[i].level = currentLevel;
+    localStorage.setItem("pnl_users", JSON.stringify(users));
+    localStorage.setItem("pnl_logged", JSON.stringify(users[i]));
+  }
 
   if (!questionsByLevel[currentLevel]) {
     alert("Has completado todos los niveles 🎉");
@@ -1124,7 +1142,6 @@ function nextLevel() {
     return;
   }
 
-  localStorage.setItem("pnl_level", currentLevel);
   score = 0;
   currentIndex = 0;
   currentQuestions = shuffleArray(questionsByLevel[currentLevel]).slice(0, 20);
